@@ -1,0 +1,28 @@
+#!/bin/sh
+set -eu
+
+patch_slack() {
+    sed -i'.bak' -e \
+        's/,"WebRTCPipeWireCapturer"/,"LebRTCPipeWireCapturer"/' \
+        /usr/lib/slack/resources/app.asar
+}
+
+case "$1" in
+    "configure")
+        patch_slack
+    ;;
+    "triggered")
+        for trigger in $2; do
+            case "$trigger" in
+                "/usr/lib/slack/resources")
+                    patch_slack
+                ;;
+                *)
+                    echo "warning: unknown trigger $trigger, skipping"
+                ;;
+            esac
+        done
+    ;;
+esac
+
+#DEBHELPER#

@@ -1,0 +1,8 @@
+/debian/*
+!/debian/compat
+!/debian/rules
+!/debian/control
+!/debian/changelog
+!/debian/copyright
+!/debian/*.triggers
+!/debian/*.postinst

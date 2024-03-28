@@ -1,0 +1,14 @@
+Source: patch-slack
+Section: misc
+Priority: optional
+Maintainer: Paul Mabileau <paulmabileau@hotmail.fr>
+Build-Depends: debhelper (>= 13)
+Standards-Version: 4.6.2
+
+Package: patch-slack
+Architecture: all
+Depends: slack-desktop, ${misc:Depends}
+Description: Patch slack to support PipeWire on install and update
+ This package adds a small dpkg trigger to patch Slack's installed files
+ in order to force it to respect its `WebRTCPipeWireCapturer` configuration
+ item that is currently ignored on purpose.
